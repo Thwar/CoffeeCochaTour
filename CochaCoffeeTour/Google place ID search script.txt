@@ -1,0 +1,4 @@
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?
+location=-17.373504,-66.1528325
+&radius=100&keyword=cocolatte&sensor=false
+&key=AIzaSyBjrLaZ9UhcFR_5a2PWeAOtrQuoMWrUt0U

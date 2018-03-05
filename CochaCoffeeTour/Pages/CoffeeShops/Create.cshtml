@@ -1,0 +1,94 @@
+@page
+@model CochaCoffeeTour.Pages.CoffeeShops.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>CoffeeShop</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.Name" class="control-label"></label>
+                <input asp-for="CoffeeShop.Name" class="form-control" />
+                <span asp-validation-for="CoffeeShop.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.GooglePlaceId" class="control-label"></label>
+                <input asp-for="CoffeeShop.GooglePlaceId" class="form-control" />
+                <span asp-validation-for="CoffeeShop.GooglePlaceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.Location" class="control-label"></label>
+                <input asp-for="CoffeeShop.Location" class="form-control" />
+                <span asp-validation-for="CoffeeShop.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.Image1Url" class="control-label"></label>
+                <input asp-for="CoffeeShop.Image1Url" class="form-control" />
+                <span asp-validation-for="CoffeeShop.Image1Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.Image2Url" class="control-label"></label>
+                <input asp-for="CoffeeShop.Image2Url" class="form-control" />
+                <span asp-validation-for="CoffeeShop.Image2Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.Image3Url" class="control-label"></label>
+                <input asp-for="CoffeeShop.Image3Url" class="form-control" />
+                <span asp-validation-for="CoffeeShop.Image3Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.Description" class="control-label"></label>
+                <input asp-for="CoffeeShop.Description" class="form-control" />
+                <span asp-validation-for="CoffeeShop.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.InternetSpeed" class="control-label"></label>
+                <input asp-for="CoffeeShop.InternetSpeed" class="form-control" />
+                <span asp-validation-for="CoffeeShop.InternetSpeed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.prosText" class="control-label"></label>
+                <input asp-for="CoffeeShop.prosText" class="form-control" />
+                <span asp-validation-for="CoffeeShop.prosText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.consText" class="control-label"></label>
+                <input asp-for="CoffeeShop.consText" class="form-control" />
+                <span asp-validation-for="CoffeeShop.consText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.rating" class="control-label"></label>
+                <input asp-for="CoffeeShop.rating" class="form-control" />
+                <span asp-validation-for="CoffeeShop.rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.Longitude" class="control-label"></label>
+                <input asp-for="CoffeeShop.Longitude" class="form-control" />
+                <span asp-validation-for="CoffeeShop.Longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeShop.Latitude" class="control-label"></label>
+                <input asp-for="CoffeeShop.Latitude" class="form-control" />
+                <span asp-validation-for="CoffeeShop.Latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
