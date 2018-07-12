@@ -1,4 +1,4 @@
 https://maps.googleapis.com/maps/api/place/nearbysearch/json?
-location=-17.373504,-66.1528325
-&radius=100&keyword=cocolatte&sensor=false
+location=-17.3734418,-66.147727
+&radius=100&keyword=Corner&sensor=false
 &key=AIzaSyBjrLaZ9UhcFR_5a2PWeAOtrQuoMWrUt0U

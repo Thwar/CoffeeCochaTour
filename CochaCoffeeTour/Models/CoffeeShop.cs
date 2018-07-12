@@ -24,7 +24,7 @@ namespace CochaCoffeeTour.Models
 
         public string consText { get; set; }
 
-        public int rating { get; set; }
+        public double? rating { get; set; }
 
         public double? Longitude { get; set; }
         public double? Latitude { get; set; }

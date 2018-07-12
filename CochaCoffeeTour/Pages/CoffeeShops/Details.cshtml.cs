@@ -20,14 +20,14 @@ namespace CochaCoffeeTour.Pages.CoffeeShops
 
         public CoffeeShop CoffeeShop { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string name)
         {
-            if (id == null)
+            if (name == null)
             {
                 return NotFound();
             }
 
-            CoffeeShop = await _context.CoffeeShop.SingleOrDefaultAsync(m => m.ID == id);
+            CoffeeShop = await _context.CoffeeShop.SingleOrDefaultAsync(m => m.Name == name);
 
             if (CoffeeShop == null)
             {

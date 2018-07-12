@@ -12,7 +12,7 @@ namespace CochaCoffeeTour.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "Pagina creada con <3 y mucho cafe por Thomas Rosales";
         }
     }
 }

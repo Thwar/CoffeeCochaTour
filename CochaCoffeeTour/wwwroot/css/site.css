@@ -2,6 +2,7 @@ body {
     padding-top: 100px;
     padding-bottom: 20px;
     background-color: #DED3BD;
+    min-width: 300px;
 }
 
 #title {
@@ -13,7 +14,7 @@ body {
 #subTitle {
     font-family: 'Courgette', cursive;
     text-align: center;
-    font-size: 115%;
+    font-size: 125%;
     color: #FFFFFF;
     margin-top: 20px;
 }
@@ -22,7 +23,7 @@ body {
     font-family: 'Courgette', cursive;
     text-align: center;
     padding: 10px;
-    font-size: 110%;
+    font-size: 115%;
 }
 
     #menu a {
@@ -106,7 +107,10 @@ body {
     }
 
 
-
+.mapImg {
+    width: 100px;
+    height: 100px;
+}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
@@ -138,4 +142,150 @@ body {
 
 .navbar-header {
     width: 100%;
+}
+
+
+/*Image gallery CSS start*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+
+figure.snip1440 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 230px;
+    max-width: 100%;
+    width: 100%;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.4em;
+    background-color: #000000;
+}
+
+    figure.snip1440 * {
+        -webkit-box-sizing: padding-box;
+        box-sizing: padding-box;
+        -webkit-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+    }
+
+    figure.snip1440 img {
+        max-width: 100%;
+        vertical-align: top;
+        height: 280px;
+    }
+
+    figure.snip1440 figcaption {
+        top: 20px;
+        left: 20px;
+        padding: 10px 15px;
+        position: absolute;
+        opacity: 0;
+        z-index: 1;
+        -webkit-transform: translateX(10%);
+        transform: translateX(10%);
+    }
+
+    figure.snip1440 h3 {
+        letter-spacing: -1px;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    figure.snip1440:after {
+        border: 8px solid #ffffff;
+        position: absolute;
+        content: "";
+        display: block;
+        top: 50%;
+        bottom: 50%;
+        left: 20px;
+        right: 20px;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        opacity: 0;
+    }
+
+    figure.snip1440 a {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        z-index: 1;
+    }
+
+    figure.snip1440:hover img,
+    figure.snip1440.hover img {
+        opacity: 0.2;
+    }
+
+    figure.snip1440:hover figcaption,
+    figure.snip1440.hover figcaption {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        opacity: 1;
+        -webkit-transition-delay: 0.3s;
+        transition-delay: 0.3s;
+    }
+
+    figure.snip1440:hover:after,
+    figure.snip1440.hover:after {
+        top: 20px;
+        bottom: 20px;
+        opacity: 0.9;
+    }
+/*Image gallery CSS end*/
+
+
+
+.navbar-toggle {
+    display: none;
+}
+
+
+.details label {
+    color: #454545;
+    font-size: 115%;
+    font-weight: bold;
+}
+
+.details h2 {
+    color: #454545;
+    font-weight: bold;
+}
+
+.details p {
+    margin: 0 0 1em;
+    text-align: justify;
+    line-height: 22px !important;
+    font-size: 15px;
+}
+
+#detail-links a {
+    color: #454545 !important;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+/*Detail coffee shop map */
+@media (max-width: 995px) {
+    body {
+        padding-top: 130px;
+    }
+}
+
+@media (max-width: 780px) {
+    body {
+        padding-top: 170px;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        padding-top: 195px;
+    }
 }
