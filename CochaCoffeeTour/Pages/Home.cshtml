@@ -4,9 +4,20 @@
 
 
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Inicio";
     //https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/model
 }
+
+<style>
+    .coffeeList li {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        font-size: 110%;
+        list-style: none;
+        text-align: center;
+        border-bottom: solid black 1px;
+    }
+</style>
 
 <script>
 
@@ -24,9 +35,6 @@
             gestureHandling: 'greedy'
 
         });
-
-        var infoWindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
 
         // Try HTML5 geolocation.
         //if (navigator.geolocation) {
@@ -50,31 +58,34 @@
         //}
 
 
+        var infoWindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
 
+        //LOOP COFFFFEEEESSSS for Google Map
 
-        //LOOP COFFFFEEEESSSS
-        var shops = @Html.Raw(Json.Serialize(@Model.CoffeeShop));
-
-        for (var i = 0; i < shops.length; i++) {
+        for (var i = 0; i < @Model.CoffeeShop.Count; i++) {
             loopCoffees(i, service,infoWindow );
         }
-
     });
 
     function loopCoffees(i, service, infoWindow) {
         setTimeout(function() {
 
-            var shops = @Html.Raw(Json.Serialize(@Model.CoffeeShop));
+            // Randomize
+            var shops = @Html.Raw(Json.Serialize(@Model.CoffeeShop.OrderBy(a => Guid.NewGuid()).ToList()));
 
-              console.log(shops);
-              var id = shops[i].googlePlaceId;
-              console.log(id);
+            var id = shops[i].googlePlaceId;
 
             service.getDetails({
                 placeId:shops[i].googlePlaceId
             }, function(place, status) {
 
-                console.log(place  + ' ' + status);
+                    if (place == null) {
+                        console.log(id + ' ' + status);
+                    }
+                    else {
+
+                    console.log(place.name + ' ' + status + ' ' + id);
               //  if (status === google.maps.places.PlacesServiceStatus.OK) {
 
                     //Create Marker
@@ -88,25 +99,20 @@
                     var lat = place.geometry.location.lat();
                     var lng = place.geometry.location.lng();
 
-
                     var mapPopup = document.createElement("P");       // Create a <p> node
                     var t = document.createTextNode(place.name);      // Create a text node
                     mapPopup.appendChild(t);
 
-
-                    popup = new Popup( new google.maps.LatLng(lat, lng), mapPopup);
+                    popup = new Popup(new google.maps.LatLng(lat, lng), mapPopup);
                     popup.setMap(map);
-
 
                     google.maps.event.addDomListener(mapPopup, 'click', function() {
                        // window.alert(place.name + 'Map was clicked!');
-
 
                         var marker = new google.maps.Marker({
                             position: {lat:  place.geometry.location.lat(), lng: place.geometry.location.lng()},
                             map: map
                         });
-
 
                         //Get DB Place
                        var shop =  shops.find(isPlaceId);
@@ -126,13 +132,13 @@
                           //  place.formatted_address +
                             '</div>');
 
-
                         infoWindow.setZIndex(5000);
-
                         infoWindow.open(map, marker);
+
+
+
                     });
-
-
+                    }
                     //google.maps.event.addListener(popup, 'click', function() {
                     //    infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' +
                     //                          'Place ID: ' + place.place_id + '<br>' +
@@ -142,7 +148,7 @@
              //   }
             });
 
-         }, 200 * i);
+         }, 235 * i ); // Delay on retrieving google details because of query limitation
     }
 
 </script>
@@ -164,74 +170,11 @@
     }
 </style>
 
-<div id="map"></div>
 
 
-@*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <p>
-                        Learn how to build ASP.NET apps that can run anywhere.
-                        <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                            Learn More
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <div class="item">
-                <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <p>
-                        There are powerful new features in Visual Studio for building modern web apps.
-                        <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                            Learn More
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <div class="item">
-                <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <p>
-                        Bring in libraries from NuGet and npm, and automate tasks using Grunt or Gulp.
-                        <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                            Learn More
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <div class="item">
-                <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
-                <div class="carousel-caption" role="option">
-                    <p>
-                        Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                        <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                            Learn More
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>*@
+<div class="row col-sm-10 col-xs-12" style="text-align: center">
 
-
-<div class="row" style="text-align: center">
+    <div id="map"></div>
 
     @foreach (var item in Model.CoffeeShop)
     {
@@ -258,5 +201,21 @@
 
     }
 
+</div>
+
+
+<div class="col-sm-2">
+    <p >
+        <br />
+        <h4 style="text-align: center; text-decoration: underline">Lista de Cafes</h4>
+        <br />
+        <ul class="coffeeList">
+            @foreach (var item in Model.CoffeeShop.OrderBy(x=>x.Name))
+            {
+                <li><a href="/CoffeeShops/Details/@item.Name" style="color: #2C2722">@Html.DisplayFor(modelItem => item.Name)</a></li>
+            }
+        </ul>
+
+    </p>
 </div>
 

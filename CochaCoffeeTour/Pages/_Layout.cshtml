@@ -17,8 +17,8 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </environment>
-    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
@@ -31,14 +31,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @*<a asp-page="/Index" class="navbar-brand">CochaCoffeeTour</a>*@
+
                 <div class="col-sm-6">
-                    <a asp-page="/Index"><h1 id="title">CochaCoffeeTour</h1> </a>
+                    <a asp-page="/Home"><h1 id="title">CochaCoffeeTour</h1> </a>
                 </div>
                 <div class="col-sm-6">
                     <p id="subTitle">Los mejores cafes en Cochabamba para trabajo remoto.</p>
                     <div id="menu">
-                        <a asp-page="/Index">Inicio</a>
+                        <a asp-page="/Home">Inicio</a>
                         &nbsp;
                         <a asp-page="/About">About</a>
 
@@ -48,7 +48,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-page="/Index">Home</a></li>
+                    <li><a asp-page="/Home">Home</a></li>
                     <li><a asp-page="/About">About</a></li>
                     <li><a asp-page="/Contact">Contact</a></li>
                 </ul>
@@ -58,22 +58,24 @@
     </nav>
     <div class="container body-content">
 
-
-
-
         @RenderBody()
-        <hr />
-        <footer>
+
+        <footer class="col-sm-12 row">
+            <hr />
             <p>
-                &copy; @DateTime.Now.Year - CochaCoffeeTour (Cochabamba - Bolivia)
+                <span >
+                    &copy; @DateTime.Now.Year CochaCoffeeTour - Thomas Rosales
+                </span>
 
-                <a style="float: right; font-size: 80%;" asp-page="/Login">Admin login</a>
+
+                <span style="float: right; font-size: 80%;">
+                    <a asp-page="/Login">Admin login</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-page="/Logout">Logout</a>
+                    }
+                </span>
             </p>
-
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a asp-page="/Logout">Logout</a>
-            }
 
         </footer>
     </div>

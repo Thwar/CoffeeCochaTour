@@ -6,14 +6,11 @@
 }
 
 
-
-
-
 <style>
     #map {
         display: block;
         width: 100%;
-        height: 200px;
+        height: 250px;
     }
 
     #map {
@@ -44,7 +41,7 @@
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -17.376499, lng: -66.1583852},
-            zoom: 17,
+            zoom: 16, // bigger number more zoom
             gestureHandling: 'greedy'
         });
 
@@ -95,8 +92,6 @@
 </script>
 
 
-
-
 <div class="row">
     <div class="col-sm-12">
 
@@ -120,11 +115,7 @@
         <div style="display: inline-flex">
 
             <h2>@Model.CoffeeShop.Name</h2>
-
-
         </div>
-
-
         <hr />
     </div>
 
@@ -148,19 +139,19 @@
                 {
                     <div class="item ">
                         <a data-fancybox="gallery" href="@Model.CoffeeShop.Image2Url">
-                            <img src="@Model.CoffeeShop.Image2Url" alt="cocha" class="img-responsive"/>
+                            <img src="@Model.CoffeeShop.Image2Url" alt="cocha" class="img-responsive" />
                         </a>
                     </div>
                 }
-                
-            @if (@Model.CoffeeShop.Image3Url != null)
-            {
-                <div class="item ">
-                    <a data-fancybox="gallery" href="@Model.CoffeeShop.Image3Url">
-                        <img src="@Model.CoffeeShop.Image3Url" alt="cocha" class="img-responsive"/>
-                    </a>
-                </div>
-            }
+
+                @if (@Model.CoffeeShop.Image3Url != null)
+                {
+                    <div class="item ">
+                        <a data-fancybox="gallery" href="@Model.CoffeeShop.Image3Url">
+                            <img src="@Model.CoffeeShop.Image3Url" alt="cocha" class="img-responsive" />
+                        </a>
+                    </div>
+                }
 
                 @*<div class="item">
                         <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
@@ -194,47 +185,39 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-
-
-
     </div>
 
-    <div class="col-sm-6">  
-        
-            <div class="col-xs-6" style="text-align: center">
-                <label>Speed Internet</label>
-                <br />@Model.CoffeeShop.InternetSpeed
-            </div>           
-        
-            <div class="col-xs-6" style="text-align: center">
-                <label>Calificacion</label>
-                <p style="text-align: center">@Model.CoffeeShop.rating/5</p>
-            </div>
+    <div class="col-sm-6">
+
+        <div class="col-xs-6" style="text-align: center">
+            <label>Speed Internet</label>
+            <br />@Model.CoffeeShop.InternetSpeed
+        </div>
+
+        <div class="col-xs-6" style="text-align: center">
+            <label>Calificacion</label>
+            <p style="text-align: center">@Model.CoffeeShop.rating/5</p>
+        </div>
 
         <p>
-                <label>Descripcion</label><br/>
-                @Model.CoffeeShop.Description
+            <label>Descripcion</label><br />
+            @Model.CoffeeShop.Description
+        </p>
+
+        <div class="col-xs-6">
+
+            <p style="white-space: pre-line">
+                <label>Pros</label>
+                @Model.CoffeeShop.prosText
             </p>
-
-            <div class="col-xs-6">
-
-                <p style="white-space: pre-line">
-                    <label>Pros</label>
-                    @Model.CoffeeShop.prosText
-                </p>
-            </div>
-            <div class="col-xs-6">
-                <p style="white-space: pre-line">
-                    <label>Contras</label>
-                    @Model.CoffeeShop.consText
-                </p>
-            </div>
-
-
-
-
-
         </div>
+        <div class="col-xs-6">
+            <p style="white-space: pre-line">
+                <label>Contras</label>
+                @Model.CoffeeShop.consText
+            </p>
+        </div>
+    </div>
 
 </div>
 
@@ -242,12 +225,12 @@
 <div id="detail-links">
     @if (User.Identity.IsAuthenticated)
     {
-        <a asp-page="./Edit" asp-route-id="@Model.CoffeeShop.ID">Edit</a> @:|
+        <a style="float: right" asp-page="./Edit" asp-route-id="@Model.CoffeeShop.ID">Edit</a> @:
     }
     <br />
 
-    <a asp-page="/Index">
-        <span class="glyphicon glyphicon-circle-arrow-left"></span> Volver atras
-    </a>
+    @*<a asp-page="/Index">
+        <h3>    <span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;Volver atras</h3>
+    </a>*@
 
 </div>

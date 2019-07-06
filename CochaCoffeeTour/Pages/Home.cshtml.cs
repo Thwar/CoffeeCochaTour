@@ -24,13 +24,9 @@ namespace CochaCoffeeTour.Pages
         public void OnGet()
         {
 
-
-            CoffeeShop = _context.CoffeeShop.ToList();
-
+            CoffeeShop = _context.CoffeeShop.ToList().OrderBy(a => Guid.NewGuid()).ToList();
         }
 
-
     }
-
 
 }

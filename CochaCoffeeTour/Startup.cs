@@ -31,8 +31,12 @@ namespace CochaCoffeeTour
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             }).AddCookie(options => { options.LoginPath = "/Login"; });
+
             services.AddMvc().AddRazorPagesOptions(options =>
             {
+                // Landing page
+                options.Conventions.AddPageRoute("/Home", "");
+
                 options.Conventions.AuthorizePage("/CoffeeShops/Create");
                 options.Conventions.AuthorizePage("/CoffeeShops/Delete");
                 options.Conventions.AuthorizePage("/CoffeeShops/Edit");
