@@ -271,6 +271,19 @@ figure.snip1440 {
     font-size: 125%;
 }
 
+
+
+@media (max-width: 995px) {
+    #homeRightContainer {
+        display: none;
+    }
+
+    #homeContainer {
+        width: 100%;
+    }
+}
+
+
 /*Detail coffee shop map */
 @media (max-width: 995px) {
     body {

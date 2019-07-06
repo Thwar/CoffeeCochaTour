@@ -172,7 +172,7 @@
 
 
 
-<div class="row col-sm-10 col-xs-12" style="text-align: center">
+<div id="homeContainer" class="row col-sm-10 col-xs-12" style="text-align: center">
 
     <div id="map"></div>
 
@@ -204,13 +204,20 @@
 </div>
 
 
-<div class="col-sm-2">
+@*  Right column *@
+<div id="homeRightContainer"  class="col-sm-2">
     <p >
         <br />
-        <h4 style="text-align: center; text-decoration: underline">Lista de Cafes</h4>
-        <br />
+        <h4 style="text-align: center; text-decoration: underline">Recursos</h4>
         <ul class="coffeeList">
-            @foreach (var item in Model.CoffeeShop.OrderBy(x=>x.Name))
+            <li><a target="_blank" href="https://www.facebook.com/groups/noalatalacochabamba/">No a la tala de árboles en Cochabamba Grupo Facebook</a></li>
+            <li><a target="_blank" href="https://www.reddit.com/r/BOLIVIA/">Reddit Bolivia</a></li>
+            </ul>
+        <br/>
+        <h4 style="text-align: center; text-decoration: underline">Lista de Cafes</h4>
+        <br/>
+        <ul class="coffeeList">
+            @foreach (var item in Model.CoffeeShop.OrderBy(x => x.Name))
             {
                 <li><a href="/CoffeeShops/Details/@item.Name" style="color: #2C2722">@Html.DisplayFor(modelItem => item.Name)</a></li>
             }

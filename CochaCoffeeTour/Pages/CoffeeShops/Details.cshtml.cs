@@ -20,8 +20,13 @@ namespace CochaCoffeeTour.Pages.CoffeeShops
 
         public CoffeeShop CoffeeShop { get; set; }
 
+        public List<CoffeeShop> ListShops { get; set; }
+
         public async Task<IActionResult> OnGetAsync(string name)
         {
+            // Get full list of coffeshops
+            ListShops = _context.CoffeeShop.ToList().OrderBy(a => Guid.NewGuid()).ToList(); 
+
             if (name == null)
             {
                 return NotFound();
